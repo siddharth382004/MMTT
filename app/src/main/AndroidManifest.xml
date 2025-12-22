@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Permissions -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.READ_SMS" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
+    <!-- Optional: only keep if really needed -->
+    <uses-permission
+        android:name="android.permission.MANAGE_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStorage" />
+
+    <uses-feature
+        android:name="android.hardware.telephony"
+        android:required="false" />
+
+    <application
+        android:allowBackup="true"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.SIH"
+        android:icon="@drawable/ic_app_logo"
+        android:roundIcon="@drawable/ic_app_logo"
+        android:hardwareAccelerated="true"
+        android:usesCleartextTraffic="true">
+
+        <!-- Launcher Activity -->
+        <activity
+            android:name=".ui.MapActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- Secondary Activity -->
+        <activity
+            android:name=".ui.MainActivity"
+            android:exported="true" />
+
+        <activity
+            android:name=".ui.SmsHistoryActivity"
+            android:exported="false" />
+
+        <!-- SMS Receiver -->
+        <receiver
+            android:name=".ui.SMSReceiver"
+            android:exported="true">
+            <intent-filter android:priority="999">
+                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
+            </intent-filter>
+        </receiver>
+
+    </application>
+
+</manifest>

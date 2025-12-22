@@ -1,0 +1,7 @@
+.gradle/
+build/
+*/build/
+.idea/
+*.iml
+local.properties
+app/src/main/assets/india.map
